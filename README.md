@@ -1,19 +1,21 @@
-# Handwriting Analyzer Flask App
 
-## Overview
+# Psyfer- Analyze your personality through your writing
 
-This Flask application allows users to upload an image, process it to analyze handwriting traits, and receive a generated PDF report containing the results. The app also accepts a username from the user, which is included in the PDF report.
+Psyfer is built on Mistral 7B model, aimed at extracting valuable insights of handwriting to generate a rough report on the user's personality. Its fundamentals works on the 9 aspects of handwriting: Loops, garland, baseline angle, top margin, letter size, line spacing, word spacing, pen pressure and slant angle.
+- Website repo link: [https://github.com/Pallavi2908/Graphology-Website](https://github.com/Pallavi2908/Graphology-Website)
 
-## Features
+### Features
+- Upload handwriting in .jpg/.jpeg/.png format
+- Extract handwriting features
+- Generate a detailed personality, with instant download
 
-- Upload an image file for processing.
-- Provide a username which is included in the PDF report.
-- Download the generated PDF report with personalized content.
+### Technologies Used
+- Backend: Flask, Werkzeug, Flask CORS, Axios
+- LLM: Mistral 7B
+- Frontend: React, TailwindCSS, Framer-motion
 
-## Getting Started
 
-### Prerequisites
-
+### Setup and Installation
 - Python 3.7 or higher
 - Flask
 - werkzeug
@@ -21,10 +23,44 @@ This Flask application allows users to upload an image, process it to analyze ha
 - MistralAI
 - for complete set of requirements, see requirements.txt
 
-You can install the required packages using `pip`. It’s recommended to create a virtual environment before installing dependencies.
-You can also run :
+### Installation Steps
+1. Clone the repositories
+```bash
+git clone https://github.com/Pallavi2908/Graphology-AI-Model
 ```
-    pip install -r requirements.txt
-```
-to download all the requirements
 
+```bash
+git clone https://github.com/Pallavi2908/Graphology-Website
+```
+
+2. Create and activate virtual environment
+```bash
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+4. Set up environment variables
+Create a `.env` file in the root directory and add:
+```
+MISTRAL_API_KEY=your_api_key_here
+FLASK_SECRET_KEY=your_secret_key
+```
+
+### Running the Application
+1. Start the Flask backend
+```bash
+cd backend
+python app.py
+```
+
+2. Start the React frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
