@@ -3,10 +3,9 @@ from mistralai import Mistral
 from constants import Mistral_apikey
 
 def get_traits_from_AI(features: dict):
-    # Get the directory where THIS script (agent.py) is located
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
 
-    # Correct relative path
+    #  relative path
     file_path = os.path.join(BASE_DIR, "agent.py")  
 
     SYSTEM_PROMPT = ""
