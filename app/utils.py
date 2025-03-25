@@ -11,21 +11,19 @@ def process_image(filepath):
     image_features = extract_features(filepath)
     return json.dumps(image_features,indent=4)
 
+def generate_pdf(text,name):
 
-def generate_pdf(text, name):
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
-    reports_dir = os.path.join(BASE_DIR, "reports") 
-    if not os.path.exists(reports_dir):
-        os.makedirs(reports_dir)
-
-    pdf_filename = f"report_{name}.pdf"
-    pdf_path = os.path.join(reports_dir, pdf_filename)  
-    relative_path = os.path.join("reports", pdf_filename) 
+    source_path = f"reports\\report_{name}.pdf" 
+    complete_source_path = f"app\\reports\\report_{name}.pdf"
     pdf = PDF()
     pdf.add_page()
-    pdf.chapter_title("Analysis")
+    pdf.chapter_title('Analysis')
     pdf.chapter_body(text)
 
-    pdf.output(pdf_path, dest="F")
+    directory = os.path.dirname(complete_source_path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
-    return relative_path
+    pdf.output(complete_source_path,dest="F")
+    print(f"PDF Generated: {complete_source_path}")  # Debugging statement
+    return source_path

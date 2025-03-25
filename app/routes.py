@@ -18,7 +18,6 @@ def download_file(filename):
         return jsonify({"error": "PDF not found"}), 404
 
      return send_from_directory(reports_dir, filename, as_attachment=True)
-
 @main.route('/', methods=['POST'])
 def upload_image():    
     if 'file' not in request.files:
@@ -31,20 +30,16 @@ def upload_image():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-        
         # Ensure uploads folder exists
         os.makedirs(os.path.dirname(filepath), exist_ok=True)     
         file.save(filepath)
         handwriting_traits = process_image(filepath)        
         result = get_traits_from_AI(handwriting_traits)
-
         if not result:
-            return jsonify({"error": "AI processing failed"}), 500
-        
+            return jsonify({"error": "AI processing failed"}), 500       
         pdf_path = generate_pdf(result, name)       
         pdf_filename = os.path.basename(pdf_path)
-        current_app.config['LAST_PDF_PATH'] = pdf_path
-        
+        current_app.config['LAST_PDF_PATH'] = pdf_path  
         return jsonify({
             "message": "Upload successful",
             "pdf_url": f"/reports/{pdf_filename}"
