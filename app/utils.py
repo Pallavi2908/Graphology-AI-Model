@@ -15,6 +15,7 @@ def generate_pdf(text,name):
 
     source_path = f"reports\\report_{name}.pdf" 
     complete_source_path = f"app\\reports\\report_{name}.pdf"
+    print(f"PDF Generated: {complete_source_path}")  # Debugging statement
     pdf = PDF()
     pdf.add_page()
     pdf.chapter_title('Analysis')
@@ -25,5 +26,5 @@ def generate_pdf(text,name):
         os.makedirs(directory)
 
     pdf.output(complete_source_path,dest="F")
-    print(f"PDF Generated: {complete_source_path}")  # Debugging statement
+    #print(f"PDF Generated: {complete_source_path}")  # Debugging statement
     return source_path
