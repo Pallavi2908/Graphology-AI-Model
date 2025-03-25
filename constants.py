@@ -1,0 +1,1 @@
+Mistral_apikey = "9ZQCf7SJn4bvoC8BjfH7h1Yzx4n560sE" # this is a sample APi_key. This might not work at the time of testing. Please provide your own apikey.
